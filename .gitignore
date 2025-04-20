@@ -6,3 +6,4 @@
 report/
 results/
 *.rds
+*.Rproj

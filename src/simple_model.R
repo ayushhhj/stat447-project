@@ -2,7 +2,7 @@
 library(rstan)
 data <- readRDS("data/processed_data.rds")
 
-X <- model.matrix(~ bedrooms + bathrooms + sqft_living + grade, data)[, -1]
+X <- model.matrix(~ bathrooms + sqft_living + grade, data)[, -1]
 y <- data$price
 
 stan_data <- list(
@@ -15,8 +15,8 @@ stan_data <- list(
 fit_simple <- stan(
   file = "stan/simple_model.stan",
   data = stan_data,
-  iter = 2000,
-  chains = 4,
+  iter = 1000,
+  chains = 3,
   seed = 123
 )
 
